@@ -1,23 +1,8 @@
 ﻿Console.WriteLine("This example is to illustrate Delegates");
 
-static int Add(int x, int y)
-{
-    int result = x + y;
-    return result;
-}
-
-static int Subtract(int a, int b)
-{
-    int result = a - b;
-    return result;
-}
-
-Mathop f = Add;
-Console.WriteLine(f(10,20));
-f = Subtract;
-Console.WriteLine(f(10,20));
-
-CalculateAndPrint(25,30,f);
+/*delegate in below allows us to write an anonymous function, The annonymous function do have a name but
+that name is been provided by compilet at run time, which can be seen using tools like dnSpy etc */
+CalculateAndPrint(25, 30, delegate(int x, int y) { return (x+y);}); 
 
 /*This function knows how to calculate and print but don't know 
 what operation to perform (The Operation to perform is passed via delegate)*/
@@ -27,5 +12,4 @@ static void CalculateAndPrint(int x, int y, Mathop f)
     Console.WriteLine(result);
 }
 
-delegate int Mathop(int a, int b);
-
+delegate int Mathop(int a, int b); //delegate here is a typed definition for a category of funcitons
