@@ -1,8 +1,12 @@
 ﻿Console.WriteLine("This example is to illustrate Delegates");
 
-/*delegate in below allows us to write an anonymous function, The annonymous function do have a name but
-that name is been provided by compilet at run time, which can be seen using tools like dnSpy etc */
-CalculateAndPrint(25, 30, delegate(int x, int y) { return (x+y);}); 
+// CalculateAndPrint(25, 30, delegate(int x, int y) { return (x+y);});
+
+/* Below is a lambda function, A lambda function is just a delegate, 
+a function with less code i:e less letter and digits, here fat arrow is a symbol to write code quickly with less words*/
+CalculateAndPrint(25, 30, (x, y) =>  x + y);
+CalculateAndPrint(25, 30, (x, y) =>  x - y);
+CalculateAndPrint(25, 30, (x, y) =>  x * y); 
 
 /*This function knows how to calculate and print but don't know 
 what operation to perform (The Operation to perform is passed via delegate)*/
