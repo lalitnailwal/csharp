@@ -1,8 +1,18 @@
 ﻿Console.WriteLine("This example is to illustrate Delegates");
 
-CalculateAndPrint<int>(25, 30, (int x, int y) =>  x * y); 
+MathOp f = Add;
+f = Subtract;
+Console.WriteLine(f(84, 42));
+
+CalculateAndPrint(21, 21, Add);
+
+CalculateAndPrint(21, 21, (x, y) => x * y);
+CalculateAndPrint(21, 21, (x, y) => x + y);
+CalculateAndPrint(21, 21, (x, y) => x - y);
+
 CalculateAndPrint("A", "B", (x, y) => x + y);
-CalculateAndPrint(true, false, (x, y) => x && y);
+CalculateAndPrint(true, true, (x, y) => x && y);
+
 
 static void CalculateAndPrint<T>(T x, T y, Combine<T> f)
 {
@@ -10,4 +20,14 @@ static void CalculateAndPrint<T>(T x, T y, Combine<T> f)
     Console.WriteLine(result);
 }
 
-delegate T Combine<T>(T a, T b);
+static int Add(int x, int y)
+{
+    return x + y;
+}
+
+static int Subtract(int a, int b)
+{
+    return a - b;
+}
+ delegate T Combine<T>(T a, T b);
+delegate int MathOp(int x, int y);
