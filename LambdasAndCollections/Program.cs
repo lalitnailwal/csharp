@@ -15,15 +15,13 @@ var heroesWhoCanFly =  string.Join(",", result);
 Console.WriteLine("Heroes Who Can Fly are as follows");
 Console.WriteLine(heroesWhoCanFly);
 
-List<Hero> FilterHeroes(List<Hero> heroes, Filter f)
+IEnumerable<Hero> FilterHeroes(IEnumerable<Hero> heroes, Filter f)
 {
-    var resultList = new List<Hero>();
     foreach(var hero in heroes)
     {
         if(f(hero))
-            resultList.Add(hero);        
+             yield return hero;  //yield helps us to get rid of cration of new list thus save on memory footprints
     }
-    return resultList;
 }
 
 delegate bool Filter(Hero hero);
