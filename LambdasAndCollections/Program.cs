@@ -10,12 +10,15 @@ var heroes = new List<Hero>{
     new(string.Empty, string.Empty, "StormFront", true),
 };
 
-var result = FilterHeroes(heroes, x => x.CanFly == true);
+var result = Filter(heroes, x => x.CanFly == true);
 var heroesWhoCanFly =  string.Join(",", result);
 Console.WriteLine("Heroes Who Can Fly are as follows");
 Console.WriteLine(heroesWhoCanFly);
 
-IEnumerable<Hero> FilterHeroes(IEnumerable<Hero> heroes, Filter f)
+var result1 = Filter(new string[] {"lalit","mohan","nailwal"}, x => x.StartsWith("l"));
+var result2 = Filter(new int[] {1,2,3,4}, x=> x % 2 == 0);
+
+IEnumerable<T> Filter<T>(IEnumerable<T> heroes, Filter<T> f) //This is a generic filter capable of filtering any type of object for any condition
 {
     foreach(var hero in heroes)
     {
@@ -24,6 +27,6 @@ IEnumerable<Hero> FilterHeroes(IEnumerable<Hero> heroes, Filter f)
     }
 }
 
-delegate bool Filter(Hero hero);
+delegate bool Filter<T>(T hero);
 
 record Hero(string FistName, string LastName, string HeroName, bool CanFly);
