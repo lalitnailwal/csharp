@@ -10,36 +10,22 @@ var heroes = new List<Hero>{
     new(string.Empty, string.Empty, "StormFront", true),
 };
 
-var result = FilterHeroesWhoCanFly(heroes);
+var result = FilterHeroes(heroes, x => x.CanFly == true);
 var heroesWhoCanFly =  string.Join(",", result);
 Console.WriteLine("Heroes Who Can Fly are as follows");
 Console.WriteLine(heroesWhoCanFly);
 
-var results = FilterHeroesWhoesLastNameIsUnknown(heroes);
-var heroesWhoesLastNameIsUnknown =  string.Join(",", result);
-Console.WriteLine("Heroes Whoes Last Name is Unknown");
-Console.WriteLine(heroesWhoesLastNameIsUnknown);
-
-List<Hero> FilterHeroesWhoCanFly(List<Hero> heroes)
+List<Hero> FilterHeroes(List<Hero> heroes, Filter f)
 {
     var resultList = new List<Hero>();
     foreach(var hero in heroes)
     {
-        if(hero.CanFly)
+        if(f(hero))
             resultList.Add(hero);        
     }
     return resultList;
 }
 
-List<Hero> FilterHeroesWhoesLastNameIsUnknown(List<Hero> heroes)
-{
-    var resultList = new List<Hero>();
-    foreach(var hero in heroes)
-    {
-        if(string.IsNullOrEmpty(hero.LastName))
-            resultList.Add(hero);        
-    }
-    return resultList;
-}
+delegate bool Filter(Hero hero);
 
 record Hero(string FistName, string LastName, string HeroName, bool CanFly);
