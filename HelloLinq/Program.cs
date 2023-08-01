@@ -8,12 +8,12 @@ if (even)
 {
     result = result.Where(n => n % 2 == 0);
 }
+
+result = result.OrderByDescending(n => n);
+
 result = result.Select(n => n * 3);
 
-foreach (var item in result)
-{
-    Console.WriteLine(item);
-}
+Console.WriteLine(result.Count());
 
 IEnumerable<int> GenerateNumbers(int Maxvalue)
 {   
