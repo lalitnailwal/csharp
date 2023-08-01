@@ -10,3 +10,5 @@ when someone show interest (i:e for loop) the execution took place
 
 * The number generator method implemneted using IEnumberable with yeild keywork doesn't generate entire number in a go but it generate number one by one after which the no go through a sequence of
 LINQ pipeling (Linq operators) for processing of the value at the very end of the query. This way helps in overcoming the memory leakage issue when dataset is quite huge'
+
+* Linq Statement helps in doing query composition before its execution. which is also called deferred execution.
