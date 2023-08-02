@@ -8,4 +8,10 @@
 	<LangVersion>preview</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="data.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
